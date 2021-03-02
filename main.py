@@ -5,17 +5,39 @@ root = tk.Tk()
 root.title("Test")
 
 transactions_history = {}
+transactions = []
+
+def set_listbox():
+    global listbox
+
+    listbox.delete(0, tk.END)
+
+    for item in transactions:
+        listbox.insert(tk.END, f"{item[0]} to {item[1]}, {item[2]} Lunks")
 
 def save_json(data):
-    data_dict
+    with open("history.json", "w") as file:
+        json.dump(transactions_history, file, indent=4)
+
+def which_selected():
+    print("At {0}".format(listbox.curselection()))
+    return int(listbox.curselection()[0])
 
 def add_transactions():
     global listbox, sender_input, reciever_input, amount_input
-    transactions_history["Transactions"] = [sender_input.get(), reciever_input.get(), amount_input.get()]
+    transactions.append([sender_input.get(), reciever_input.get(), amount_input.get()])
+    transactions_history["Transactions"] = transactions
 
-    listbox.insert(tk.END, f"{sender_input.get()} to {reciever_input.get()}, {amount_input.get()} Lunks")
+    save_json(transactions_history)
 
+    set_listbox()
 
+def delete_transaction():
+    del transactions[which_selected()]
+
+    save_json(transactions_history)
+
+    set_listbox()
 
 # Entries and Label
 input_frame = tk.Frame(root)
@@ -47,7 +69,7 @@ btn_frame = tk.Frame(root)
 btn_frame.pack()
 add_btn= tk.Button(btn_frame, text=" Add    ", command=add_transactions)
 update_btn = tk.Button(btn_frame, text="Update ")
-del_btn = tk.Button(btn_frame, text="Delete ")
+del_btn = tk.Button(btn_frame, text="Delete ", command=delete_transaction)
 load_btn = tk.Button(btn_frame, text="Load   ")
 refresh_btn = tk.Button(btn_frame, text="Refresh")
 add_btn.pack(side=tk.LEFT)
