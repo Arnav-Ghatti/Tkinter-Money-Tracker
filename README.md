@@ -1,3 +1,4 @@
-# This is a test
+# Hi this app will help you organise money transactions
 
-I am trying to make something in tkinter
+If you want to track you money transactions then this app will help you.
+I made this app in python usng tkinter

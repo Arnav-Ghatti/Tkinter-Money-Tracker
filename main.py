@@ -14,7 +14,7 @@ def set_listbox():
     listbox.delete(0, tk.END)
 
     for item in transactions:
-        listbox.insert(tk.END, f"{item[0]} to {item[1]}, {item[2]} Lunks")
+        listbox.insert(tk.END, f"{} | {item[0]} to {item[1]}, {item[2]} Lunks")
 
 def save_json(data):
     with open("history.json", "w") as file:
@@ -22,6 +22,7 @@ def save_json(data):
 
 def add_transactions():
     global listbox, sender_input, reciever_input, amount_input
+    
     transactions.append([sender_input.get(), reciever_input.get(), amount_input.get()])
     transactions_history["Transactions"] = transactions
 
