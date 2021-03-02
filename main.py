@@ -1,37 +1,65 @@
 import tkinter as tk
+import json
 
 root = tk.Tk()
 root.title("Test")
 
-title = tk.Label(root, text="Test Title")
-title.grid(row=0, column=0, columnspan=5, pady=2)
+transactions_history = {}
 
-# Entries and Labels
+def save_json(data):
+    data_dict
+
+def add_transactions():
+    global listbox, sender_input, reciever_input, amount_input
+    transactions_history["Transactions"] = [sender_input.get(), reciever_input.get(), amount_input.get()]
+
+    listbox.insert(tk.END, f"{sender_input.get()} to {reciever_input.get()}, {amount_input.get()} Lunks")
+
+
+
+# Entries and Label
+input_frame = tk.Frame(root)
+input_frame.pack()
+
 # Sender
-sender_label = tk.Label(root, text="Sender: ")
-sender_label.grid(row=1, column=0, columnspan=1, pady=2)
-sender_input = tk.Entry(root, width=30, borderwidth=3)
-sender_input.grid(row=1, column=1, pady=2)
+sender_label = tk.Label(input_frame, text="Sender: ")
+sender_label.grid(row=0, column=0, sticky="W")
+sender_var = tk.StringVar()
+sender_input = tk.Entry(input_frame, textvariable=sender_var)
+sender_input.grid(row=0, column=1, sticky="W")
 
 # Reciever
-reciever_label = tk.Label(root, text="Reciever: ")
-reciever_label.grid(row=2, column=0, columnspan=1, pady=2)
-reciever_input = tk.Entry(root, width=30, borderwidth=3)
-reciever_input.grid(row=2, column=1, pady=2)
+reciever_label = tk.Label(input_frame, text="Reciever: ")
+reciever_label.grid(row=1, column=0, sticky="W")
+reciever_var = tk.StringVar()
+reciever_input = tk.Entry(input_frame, textvariable=reciever_var)
+reciever_input.grid(row=1, column=1, sticky="W")
 
-# Amount
-amount_label = tk.Label(root, text="Amount: ")
-amount_label.grid(row=3, column=0, columnspan=1, pady=2)
-amount_input = tk.Entry(root, width=30, borderwidth=3)
-amount_input.grid(row=3, column=1, pady=2)
+# Amounr
+amount_label = tk.Label(input_frame, text="Amount: ")
+amount_label.grid(row=2, column=0, sticky="S")
+amount_var = tk.StringVar()
+amount_input = tk.Entry(input_frame, textvariable=amount_var)
+amount_input.grid(row=2, column=1, sticky="S")
 
-# Search
-search_input = tk.Entry(root, width=30, borderwidth=3)
-search_input.grid(row=4, column=1, pady=2)
-search_button = tk.Button(root, text="Search")
-search_button.grid(row=4, column=0, pady=2)
+# Buttons
+btn_frame = tk.Frame(root)
+btn_frame.pack()
+add_btn= tk.Button(btn_frame, text=" Add    ", command=add_transactions)
+update_btn = tk.Button(btn_frame, text="Update ")
+del_btn = tk.Button(btn_frame, text="Delete ")
+load_btn = tk.Button(btn_frame, text="Load   ")
+refresh_btn = tk.Button(btn_frame, text="Refresh")
+add_btn.pack(side=tk.LEFT)
+update_btn.pack(side=tk.LEFT)
+del_btn.pack(side=tk.LEFT)
+load_btn.pack(side=tk.LEFT)
+refresh_btn.pack(side=tk.LEFT)
 
-listbox = tk.Listbox(root, width=40)
-listbox.grid(row=5, column=0, columnspan=2)
+# Listbox
+data_frame = tk.Frame(root)
+data_frame.pack()
+listbox = tk.Listbox(data_frame, height=8, width=40)
+listbox.pack(side=tk.LEFT, fill=tk.BOTH, expand=1)
 
 root.mainloop()
