@@ -31,7 +31,7 @@ search_input.grid(row=4, column=1, pady=2)
 search_button = tk.Button(root, text="Search")
 search_button.grid(row=4, column=0, pady=2)
 
-# listbox = tk.Listbox(root)
-# listbox.grid(row=5, column=0)
+listbox = tk.Listbox(root, width=40)
+listbox.grid(row=5, column=0, columnspan=2)
 
 root.mainloop()
