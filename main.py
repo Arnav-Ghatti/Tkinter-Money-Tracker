@@ -68,21 +68,21 @@ input_frame.pack()
 sender_label = tk.Label(input_frame, text="Sender: ")
 sender_label.grid(row=0, column=0, sticky="W")
 sender_var = tk.StringVar()
-sender_input = tk.Entry(input_frame, textvariable=sender_var)
+sender_input = tk.Entry(input_frame, textvariable=sender_var, width=33)
 sender_input.grid(row=0, column=1, sticky="W", pady=2)
 
 # Reciever
 reciever_label = tk.Label(input_frame, text="Reciever: ")
 reciever_label.grid(row=1, column=0, sticky="W")
 reciever_var = tk.StringVar()
-reciever_input = tk.Entry(input_frame, textvariable=reciever_var)
+reciever_input = tk.Entry(input_frame, textvariable=reciever_var, width=33)
 reciever_input.grid(row=1, column=1, sticky="W", pady=2)
 
 # Amounr
 amount_label = tk.Label(input_frame, text="Amount: ")
 amount_label.grid(row=2, column=0, sticky="W")
 amount_var = tk.StringVar()
-amount_input = tk.Entry(input_frame, textvariable=amount_var)
+amount_input = tk.Entry(input_frame, textvariable=amount_var, width=33)
 amount_input.grid(row=2, column=1, sticky="W", pady=2)
 
 # Buttons
@@ -102,7 +102,10 @@ refresh_btn.pack(side=tk.LEFT, padx=2, pady=2)
 # Listbox
 data_frame = tk.Frame(root)
 data_frame.pack()
-listbox = tk.Listbox(data_frame, height=8, width=45)
+scroll_bar = tk.Scrollbar(data_frame, orient=tk.VERTICAL)
+listbox = tk.Listbox(data_frame, height=8, width=45, yscrollcommand=scroll_bar.set)
+scroll_bar.config(command=listbox.yview)
+scroll_bar.pack(side=tk.RIGHT, fill=tk.Y)
 listbox.pack(side=tk.LEFT, fill=tk.BOTH, expand=1, pady=2)
 
 def load_data():
