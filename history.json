@@ -1,9 +1,24 @@
 {
     "Transactions": [
         [
-            "xvff",
-            "dsgf",
-            "123"
+            "Arnav",
+            "Aryan",
+            "100"
+        ],
+        [
+            "Arnav",
+            "Aryan",
+            "50"
+        ],
+        [
+            "Arnav",
+            "Papa",
+            "50"
+        ],
+        [
+            "Mama",
+            "Aryan",
+            "50"
         ]
     ]
 }

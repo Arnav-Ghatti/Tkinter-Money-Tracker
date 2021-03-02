@@ -17,12 +17,15 @@ def set_listbox():
         listbox.insert(tk.END, f"{item[0]} to {item[1]}, {item[2]} Lunks")
 
 def load_transactions():
+    global listbox
     with open("history.json", "r") as file:
         transaction_history = json.load(file)
     
     transactions = transaction_history["Transactions"]
+    listbox.delete(0, tk.END)
     
-    set_listbox()
+    for item in transactions:
+        listbox.insert(tk.END, f"{item[0]} to {item[1]}, {item[2]} Lunks")
 
 def save_json(data):
     with open("history.json", "w") as file:
@@ -79,7 +82,7 @@ add_btn= tk.Button(btn_frame, text=" Add    ", command=add_transactions)
 update_btn = tk.Button(btn_frame, text="Update ")
 del_btn = tk.Button(btn_frame, text="Delete ", command=delete_transaction)
 load_btn = tk.Button(btn_frame, text="Load   ")
-refresh_btn = tk.Button(btn_frame, text="Refresh", command=load_transactions)
+refresh_btn = tk.Button(btn_frame, text="Refresh", command=set_listbox)
 add_btn.pack(side=tk.LEFT)
 update_btn.pack(side=tk.LEFT)
 del_btn.pack(side=tk.LEFT)
@@ -91,5 +94,7 @@ data_frame = tk.Frame(root)
 data_frame.pack()
 listbox = tk.Listbox(data_frame, height=8, width=40)
 listbox.pack(side=tk.LEFT, fill=tk.BOTH, expand=1)
+
+load_transactions()
 
 root.mainloop()
