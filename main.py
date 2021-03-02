@@ -20,7 +20,7 @@ def load_transactions():
     with open("history.json", "r") as file:
         transaction_history = json.load(file)
     
-    transactions = transaction_history["Transfers"]
+    transactions = transaction_history["Transactions"]
     
     set_listbox()
 
