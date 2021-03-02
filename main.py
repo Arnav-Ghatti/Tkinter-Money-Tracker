@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import messagebox 
 import json
 
 root = tk.Tk()
@@ -19,10 +20,6 @@ def save_json(data):
     with open("history.json", "w") as file:
         json.dump(transactions_history, file, indent=4)
 
-def which_selected():
-    print("At {0}".format(listbox.curselection()))
-    return int(listbox.curselection()[0])
-
 def add_transactions():
     global listbox, sender_input, reciever_input, amount_input
     transactions.append([sender_input.get(), reciever_input.get(), amount_input.get()])
@@ -33,7 +30,10 @@ def add_transactions():
     set_listbox()
 
 def delete_transaction():
-    del transactions[which_selected()]
+    try:
+        del transactions[listbox.curselection()[0]]
+    except IndexError:
+        messagebox.showerror("showerror", "No item selected")
 
     save_json(transactions_history)
 
