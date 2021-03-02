@@ -8,6 +8,15 @@ root.title("Test")
 transactions_history = {}
 transactions = []
 
+def load_transactions():
+    with open("history.json", "r") as file:
+        transaction_history = json.load(file)
+    
+    for key, values in transactions_history:
+        transactions.append(values)
+
+load_transactions()
+
 def set_listbox():
     global listbox
 
@@ -15,6 +24,8 @@ def set_listbox():
 
     for item in transactions:
         listbox.insert(tk.END, f"{item[0]} to {item[1]}, {item[2]} Lunks")
+
+set_listbox()
 
 def save_json(data):
     with open("history.json", "w") as file:
