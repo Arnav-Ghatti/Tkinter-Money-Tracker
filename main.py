@@ -9,6 +9,8 @@ transactions_history = {}
 transactions = []
 
 def set_listbox():
+    """Refreshes the listbox"""
+    
     global listbox
 
     listbox.delete(0, tk.END)
@@ -17,10 +19,14 @@ def set_listbox():
         listbox.insert(tk.END, f"{item[0]} to {item[1]}, ${item[2]}, {item[3]}")
 
 def save_json(data):
+    """Saves the date to history.json file"""
+    
     with open("history.json", "w") as file:
         json.dump(transactions_history, file, indent=4)
 
 def add_transactions():
+    """Adds transactios to the listbox"""
+    
     global listbox, sender_input, reciever_input, amount_input, desc_input
     
     transactions.append([sender_input.get(), reciever_input.get(), amount_input.get(), desc_input.get()])
@@ -31,6 +37,8 @@ def add_transactions():
     set_listbox()
 
 def delete_transaction():
+    """Deletes transactions from the listbox"""    
+    
     try:
         del transactions[listbox.curselection()[0]]
         transactions_history["Transactions"] = transactions
@@ -42,6 +50,8 @@ def delete_transaction():
     set_listbox()
 
 def load_transactions():
+    """Loads data of transactions from the selected item in the listbox"""
+    
     global sender_var, reciever_var, amount_var, sender_input, reciever_input, amount_input
     
     try:
@@ -57,6 +67,7 @@ def load_transactions():
         messagebox.showerror("showerror", "No item selected")
 
 def update_transactions():
+    """Updates selected transaction to the details newly entered"""
     
     try:
         transactions[listbox.curselection()[0]] = [sender_var.get(), reciever_var.get(), amount_var.get(), desc_var.get()]
@@ -127,6 +138,8 @@ scroll_bar_x.pack(side=tk.BOTTOM, fill=tk.X)
 listbox.pack(side=tk.LEFT, fill=tk.BOTH, expand=1, pady=2)
 
 def load_data():
+    """Loads data from the history.json file to the listbox"""
+    
     global transactions, listbox
     
     with open("history.json", "r") as file:
