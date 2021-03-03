@@ -14,7 +14,7 @@ def set_listbox():
     listbox.delete(0, tk.END)
 
     for item in transactions:
-        listbox.insert(tk.END, f"{} | {item[0]} to {item[1]}, {item[2]} Lunks")
+        listbox.insert(tk.END, f"{item[0]} to {item[1]}, ${item[2]}")
 
 def save_json(data):
     with open("history.json", "w") as file:
@@ -33,6 +33,7 @@ def add_transactions():
 def delete_transaction():
     try:
         del transactions[listbox.curselection()[0]]
+        transactions_history["Transactions"] = transactions
     except IndexError:
         messagebox.showerror("showerror", "No item selected")
 
@@ -57,7 +58,8 @@ def load_transactions():
 def update_transactions():
     
     transactions[listbox.curselection()[0]] = [sender_var.get(), reciever_var.get(), amount_var.get()]
-    save_json()
+    transactions_history["Transactions"] = transactions
+    save_json(transactions_history)
     
     set_listbox()
 
