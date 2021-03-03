@@ -14,16 +14,16 @@ def set_listbox():
     listbox.delete(0, tk.END)
 
     for item in transactions:
-        listbox.insert(tk.END, f"{item[0]} to {item[1]}, ${item[2]}")
+        listbox.insert(tk.END, f"{item[0]} to {item[1]}, ${item[2]}, {item[3]}")
 
 def save_json(data):
     with open("history.json", "w") as file:
         json.dump(transactions_history, file, indent=4)
 
 def add_transactions():
-    global listbox, sender_input, reciever_input, amount_input
+    global listbox, sender_input, reciever_input, amount_input, desc_input
     
-    transactions.append([sender_input.get(), reciever_input.get(), amount_input.get()])
+    transactions.append([sender_input.get(), reciever_input.get(), amount_input.get(), desc_input.get()])
     transactions_history["Transactions"] = transactions
 
     save_json(transactions_history)
@@ -51,16 +51,21 @@ def load_transactions():
         sender_var.set(selected_item[0])
         reciever_var.set(selected_item[1])
         amount_var.set(selected_item[2])
+        desc_var.set(selected_item[3])
     
     except IndexError:
         messagebox.showerror("showerror", "No item selected")
 
 def update_transactions():
     
-    transactions[listbox.curselection()[0]] = [sender_var.get(), reciever_var.get(), amount_var.get()]
-    transactions_history["Transactions"] = transactions
+    try:
+        transactions[listbox.curselection()[0]] = [sender_var.get(), reciever_var.get(), amount_var.get(), desc_var.get()]
+        transactions_history["Transactions"] = transactions    
+    except IndexError:
+        messagebox.showerror("showerror", "No item Selected")
+
     save_json(transactions_history)
-    
+        
     set_listbox()
 
 # Entries and Label
@@ -88,6 +93,13 @@ amount_var = tk.StringVar()
 amount_input = tk.Entry(input_frame, textvariable=amount_var, width=33)
 amount_input.grid(row=2, column=1, sticky="W", pady=2)
 
+# Description
+desc_label = tk.Label(input_frame, text="Description: ")
+desc_label.grid(row=3, column=0, sticky="W")
+desc_var = tk.StringVar()
+desc_input = tk.Entry(input_frame, textvariable=desc_var, width=33)
+desc_input.grid(row=3, column=1, sticky="W", pady=2)
+
 # Buttons
 btn_frame = tk.Frame(root)
 btn_frame.pack()
@@ -105,10 +117,13 @@ refresh_btn.pack(side=tk.LEFT, padx=2, pady=2)
 # Listbox
 data_frame = tk.Frame(root)
 data_frame.pack()
-scroll_bar = tk.Scrollbar(data_frame, orient=tk.VERTICAL)
-listbox = tk.Listbox(data_frame, height=8, width=45, yscrollcommand=scroll_bar.set)
-scroll_bar.config(command=listbox.yview)
-scroll_bar.pack(side=tk.RIGHT, fill=tk.Y)
+scroll_bar_y = tk.Scrollbar(data_frame, orient=tk.VERTICAL)
+scroll_bar_x = tk.Scrollbar(data_frame, orient=tk.HORIZONTAL)
+listbox = tk.Listbox(data_frame, height=8, width=45, yscrollcommand=scroll_bar_y.set, xscrollcommand=scroll_bar_x.set)
+scroll_bar_y.config(command=listbox.yview)
+scroll_bar_y.pack(side=tk.RIGHT, fill=tk.Y)
+scroll_bar_x.config(command=listbox.xview)
+scroll_bar_x.pack(side=tk.BOTTOM, fill=tk.X)
 listbox.pack(side=tk.LEFT, fill=tk.BOTH, expand=1, pady=2)
 
 def load_data():
