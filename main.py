@@ -86,7 +86,7 @@ reciever_var = tk.StringVar()
 reciever_input = tk.Entry(input_frame, textvariable=reciever_var, width=33)
 reciever_input.grid(row=1, column=1, sticky="W", pady=2)
 
-# Amounr
+# Amount
 amount_label = tk.Label(input_frame, text="Amount: ")
 amount_label.grid(row=2, column=0, sticky="W")
 amount_var = tk.StringVar()
@@ -136,7 +136,7 @@ def load_data():
     listbox.delete(0, tk.END)
 
     for item in transactions:
-        listbox.insert(tk.END, f"{item[0]} to {item[1]}, {item[2]} Lunks")
+        listbox.insert(tk.END, f"{item[0]} to {item[1]}, ${item[2]}, {item[3]}")
 
 load_data()
 
