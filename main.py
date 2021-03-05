@@ -79,6 +79,10 @@ def update_transactions():
         
     set_listbox()
 
+# Title
+title = tk.Label(root, text="Money Tracker")
+title.pack(pady=3)
+
 # Entries and Label
 input_frame = tk.Frame(root)
 input_frame.pack()
@@ -138,8 +142,12 @@ scroll_bar_x.pack(side=tk.BOTTOM, fill=tk.X)
 listbox.pack(side=tk.LEFT, fill=tk.BOTH, expand=1, pady=2)
 
 # Status Bar
-status_bar_label = tk.Label(root, text="Made By Arnav Ghatti", bd=1, relief=tk.SUNKEN, anchor=tk.E)
-status_bar_label.pack(side=tk.RIGHT, fill=tk.BOTH, expand=1, pady=2, padx=2)
+status_frame = tk.LabelFrame(root, bd=1, relief=tk.SUNKEN)
+status_frame.pack(fill=tk.BOTH, expand=1, padx=2, pady=2)
+status_bar_label = tk.Label(status_frame, text="Made By Arnav Ghatti", anchor=tk.E)
+status_bar_label.pack(side=tk.RIGHT, fill=tk.BOTH, expand=1)
+version_label = tk.Label(status_frame, text="Version: 1.1.5", anchor=tk.W)
+version_label.pack(side=tk.LEFT, fill=tk.BOTH, expand=1)
 
 def load_data():
     """Loads data from the history.json file to the listbox"""
