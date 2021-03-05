@@ -5,7 +5,7 @@ I made this app in python usng tkinter.
 
 This project is open source and you can use it :)
 
-####Version 1.1.0 features####
+#### Version 1.1.0 features ####
 * Status Bar
 * Padding
 * Description option
