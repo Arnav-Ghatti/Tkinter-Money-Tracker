@@ -139,7 +139,7 @@ listbox.pack(side=tk.LEFT, fill=tk.BOTH, expand=1, pady=2)
 
 # Status Bar
 status_bar_label = tk.Label(root, text="Made By Arnav Ghatti", bd=1, relief=tk.SUNKEN, anchor=tk.E)
-status_bar_label.pack(side=tk.RIGHT, fill=tk.BOTH, expand=1, pady=2)
+status_bar_label.pack(side=tk.RIGHT, fill=tk.BOTH, expand=1, pady=2, padx=2)
 
 def load_data():
     """Loads data from the history.json file to the listbox"""
