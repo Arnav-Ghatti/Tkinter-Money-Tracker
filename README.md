@@ -7,6 +7,7 @@ If you want to track you money transactions then this app will help you. This pr
 ## Getting Started ##
 
 To get the app on your local machine, you can either clone the repository or download it.
+After doing so open either the main.exe file (If you are on Windows) or the main.py file.
 
 ### Dependencies ###
 * Any version of **Windows** (The main.exe file won't work in MAC or Linux).
