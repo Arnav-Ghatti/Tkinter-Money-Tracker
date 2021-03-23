@@ -11,7 +11,7 @@ After doing so open either the main.exe file (If you are on Windows) or the main
 
 ### Dependencies ###
 * Any version of **Windows** (The main.exe file won't work in MAC or Linux).
-* Python should be installed on your system.
+* If on MAC or Linux then Python should be installed on your system.
 
 
 ## Built With ###
