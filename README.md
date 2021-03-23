@@ -35,6 +35,12 @@ After doing so open either the main.exe file (If you are on Windows) or the main
     * Title
     * Version Label
 
+* Version 2.2.7
+    * Font changed
+    * Minor changes to the code
+    * Empty Fields are not allowed
+    * Amount section has been changed to only numbers
+
 ## License ##
 
 This project is under the MIT License. See LICENSE file for details

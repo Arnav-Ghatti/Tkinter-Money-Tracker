@@ -32,12 +32,26 @@ def check_fields():
         return False
     return True
 
+def clear_fields():
+    sender_input.delete(0, tk.END)
+    reciever_input.delete(0, tk.END)
+    amount_input.delete(0, tk.END)
+    desc_input.delete(0, tk.END)
+
 def add_transactions():
     """Adds transactios to the listbox"""
     
+    try:
+        check_int = int(amount_input.get())
+    except ValueError:
+        messagebox.showwarning(title="❌ Error ❌", message="Please enter only numbers in amount field")
+        return
+
     if check_fields():
         transactions.append([sender_input.get(), reciever_input.get(), amount_input.get(), desc_input.get()])
         transactions_history["Transactions"] = transactions
+
+        clear_fields()
 
         save_json(transactions_history)
         set_listbox()
@@ -114,7 +128,7 @@ reciever_input.grid(row=1, column=1, sticky="W", pady=2)
 amount_label = tk.Label(input_frame, text="Amount: ", font=(FONT_NAME, 10, "normal"))
 amount_label.grid(row=2, column=0, sticky="W")
 amount_var = tk.StringVar()
-amount_input = tk.Entry(input_frame, textvariable=amount_var, width=36, font=(FONT_NAME, 10, "normal"))
+amount_input = tk.Entry(input_frame, width=36, font=(FONT_NAME, 10, "normal"))
 amount_input.grid(row=2, column=1, sticky="W", pady=2)
 
 # Description
