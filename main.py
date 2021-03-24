@@ -4,9 +4,13 @@ import json
 
 # Constants
 FONT_NAME = "Open Sans"
+LIGHT_COLOR = "#203647"
+DARK_COLOR = "#12232E"
+FONT_COLOR = "#ffffff"
 
 root = tk.Tk()
 root.title("Money Tracker")
+root.config(bg=DARK_COLOR)
 
 transactions_history = {}
 transactions = []
@@ -104,67 +108,67 @@ def update_transactions():
 
 
 # Title
-title = tk.Label(root, text="Money Tracker", font=(FONT_NAME, 15, "normal"))
+title = tk.Label(root, text="Money Tracker", font=(FONT_NAME, 15, "bold"), bg=DARK_COLOR, highlightthickness=0, fg=FONT_COLOR)
 title.grid(row=0, column=0, columnspan=2, pady=3)
 
 # ---------------------------- ENTRIES AND LABELS ------------------------------- #
-input_frame = tk.Frame(root)
-input_frame.grid(row=1, column=0, pady=3)
+input_frame = tk.Frame(root, bg=DARK_COLOR, highlightthickness=0)
+input_frame.grid(row=1, column=0, sticky="N", padx=5)
 
 # Sender
-sender_label = tk.Label(input_frame, text="Sender: ", font=(FONT_NAME, 12, "normal"))
-sender_label.grid(row=0, column=0, sticky="W")
+sender_label = tk.Label(input_frame, text="Sender: ", font=(FONT_NAME, 12, "normal"), bg=DARK_COLOR, fg=FONT_COLOR, highlightthickness=0)
+sender_label.grid(row=0, column=0, sticky="W", pady=5)
 sender_var = tk.StringVar()
-sender_input = tk.Entry(input_frame, textvariable=sender_var, width=36, font=(FONT_NAME, 12, "normal"))
+sender_input = tk.Entry(input_frame, textvariable=sender_var, width=36, font=(FONT_NAME, 12, "normal"), bg=LIGHT_COLOR, fg=FONT_COLOR, highlightthickness=0, bd=0)
 sender_input.focus()
-sender_input.grid(row=0, column=1, sticky="W", pady=2)
+sender_input.grid(row=0, column=1, sticky="W", pady=5, padx=10)
 
 # Reciever
-reciever_label = tk.Label(input_frame, text="Reciever: ",  font=(FONT_NAME, 12, "normal"))
-reciever_label.grid(row=1, column=0, sticky="W")
+reciever_label = tk.Label(input_frame, text="Reciever: ",  font=(FONT_NAME, 12, "normal"), bg=DARK_COLOR, fg=FONT_COLOR, highlightthickness=0)
+reciever_label.grid(row=1, column=0, sticky="W", pady=5)
 reciever_var = tk.StringVar()
-reciever_input = tk.Entry(input_frame, textvariable=reciever_var, width=36, font=(FONT_NAME, 12, "normal"))
-reciever_input.grid(row=1, column=1, sticky="W", pady=2)
+reciever_input = tk.Entry(input_frame, textvariable=reciever_var, width=36, font=(FONT_NAME, 12, "normal"), bg=LIGHT_COLOR, fg=FONT_COLOR, highlightthickness=0, bd=0)
+reciever_input.grid(row=1, column=1, sticky="W", pady=5, padx=10)
 
 # Amount
-amount_label = tk.Label(input_frame, text="Amount: ", font=(FONT_NAME, 12, "normal"))
-amount_label.grid(row=2, column=0, sticky="W")
+amount_label = tk.Label(input_frame, text="Amount: ", font=(FONT_NAME, 12, "normal"), bg=DARK_COLOR, fg=FONT_COLOR, highlightthickness=0)
+amount_label.grid(row=2, column=0, sticky="W", pady=5)
 amount_var = tk.StringVar()
-amount_input = tk.Entry(input_frame, textvariable=amount_var, width=36, font=(FONT_NAME, 12, "normal"))
-amount_input.grid(row=2, column=1, sticky="W", pady=2)
+amount_input = tk.Entry(input_frame, textvariable=amount_var, width=36, font=(FONT_NAME, 12, "normal"), bg=LIGHT_COLOR, fg=FONT_COLOR, highlightthickness=0, bd=0)
+amount_input.grid(row=2, column=1, sticky="W", pady=5, padx=10)
 
 # Description
-desc_label = tk.Label(input_frame, text="Description: ", font=(FONT_NAME, 12, "normal"))
-desc_label.grid(row=3, column=0, sticky="N")
-desc_input = tk.Text(input_frame, width=36, height=8, font=(FONT_NAME, 12, "normal"))
-desc_input.grid(row=3, column=1, sticky="W", pady=2)
+desc_label = tk.Label(input_frame, text="Description: ", font=(FONT_NAME, 12, "normal"), bg=DARK_COLOR, fg=FONT_COLOR, highlightthickness=0, bd=0)
+desc_label.grid(row=3, column=0, sticky="N", pady=5)
+desc_input = tk.Text(input_frame, width=36, height=12, font=(FONT_NAME, 12, "normal"), bg=LIGHT_COLOR, fg=FONT_COLOR, highlightthickness=0, bd=0)
+desc_input.grid(row=3, column=1, sticky="W", pady=5, padx=10)
 
 # ---------------------------- BUTTONS ------------------------------- #
-btn_frame = tk.Frame(root)
-btn_frame.grid(row=2, column=0)
+btn_frame = tk.Frame(root, bg=DARK_COLOR, highlightthickness=0)
+btn_frame.grid(row=2, column=0, padx=5, pady=5, sticky="N")
 
 # Add
-add_btn= tk.Button(btn_frame, text="    Add    ", command=add_transactions, font=(FONT_NAME, 11, "normal"))
-add_btn.pack(side=tk.LEFT, padx=3, pady=2)
+add_btn= tk.Button(btn_frame, text="    Add    ", command=add_transactions, font=(FONT_NAME, 11, "normal"), bg=LIGHT_COLOR, fg=FONT_COLOR, highlightthickness=0, bd=0)
+add_btn.pack(side=tk.LEFT, padx=5, pady=5)
 
 # Update
-update_btn = tk.Button(btn_frame, text="  Update  ", command=update_transactions, font=(FONT_NAME, 11, "normal"))
-update_btn.pack(side=tk.LEFT, padx=3, pady=2)
+update_btn = tk.Button(btn_frame, text="  Update  ", command=update_transactions, font=(FONT_NAME, 11, "normal"), bg=LIGHT_COLOR, fg=FONT_COLOR, highlightthickness=0, bd=0)
+update_btn.pack(side=tk.LEFT, padx=5, pady=5)
 
 # Delete
-del_btn = tk.Button(btn_frame, text="  Delete  ", command=delete_transaction, font=(FONT_NAME, 11, "normal"))
-del_btn.pack(side=tk.LEFT, padx=3, pady=2)
+del_btn = tk.Button(btn_frame, text="  Delete  ", command=delete_transaction, font=(FONT_NAME, 11, "normal"), bg=LIGHT_COLOR, fg=FONT_COLOR, highlightthickness=0, bd=0)
+del_btn.pack(side=tk.LEFT, padx=5, pady=5)
 
 # Load
-load_btn = tk.Button(btn_frame, text="   Load   ", command=load_transactions, font=(FONT_NAME, 11, "normal"))
-load_btn.pack(side=tk.LEFT, padx=3, pady=2)
+load_btn = tk.Button(btn_frame, text="   Load   ", command=load_transactions, font=(FONT_NAME, 11, "normal"), bg=LIGHT_COLOR, fg=FONT_COLOR, highlightthickness=0, bd=0)
+load_btn.pack(side=tk.LEFT, padx=5, pady=5)
 
 # Refresh
-refresh_btn = tk.Button(btn_frame, text="  Refresh  ", command=set_listbox, font=(FONT_NAME, 11, "normal"))
-refresh_btn.pack(side=tk.LEFT, padx=3, pady=2)
+refresh_btn = tk.Button(btn_frame, text="  Refresh  ", command=set_listbox, font=(FONT_NAME, 11, "normal"), bg=LIGHT_COLOR, fg=FONT_COLOR, highlightthickness=0, bd=0)
+refresh_btn.pack(side=tk.LEFT, padx=5, pady=5)
 
 # ---------------------------- LISTBOX ------------------------------- #
-data_frame = tk.Frame(root)
+data_frame = tk.Frame(root, bg=DARK_COLOR, highlightthickness=0)
 data_frame.grid(row=1, column=1, rowspan=2)
 
 # Scroll Bars
@@ -172,7 +176,7 @@ scroll_bar_y = tk.Scrollbar(data_frame, orient=tk.VERTICAL)
 scroll_bar_x = tk.Scrollbar(data_frame, orient=tk.HORIZONTAL)
 
 # Listbox
-listbox = tk.Listbox(data_frame, height=13, width=45, yscrollcommand=scroll_bar_y.set, xscrollcommand=scroll_bar_x.set, font=(FONT_NAME, 12, "normal"))
+listbox = tk.Listbox(data_frame, height=18, width=50, yscrollcommand=scroll_bar_y.set, xscrollcommand=scroll_bar_x.set, font=(FONT_NAME, 12, "normal"), bg=LIGHT_COLOR, fg=FONT_COLOR, highlightthickness=0, bd=0)
 
 # Scroll Bars
 scroll_bar_y.config(command=listbox.yview)
@@ -180,18 +184,18 @@ scroll_bar_y.pack(side=tk.RIGHT, fill=tk.Y)
 scroll_bar_x.config(command=listbox.xview)
 scroll_bar_x.pack(side=tk.BOTTOM, fill=tk.X)
 
-listbox.pack(side=tk.LEFT, fill=tk.BOTH, expand=1, pady=2)
+listbox.pack(side=tk.LEFT, fill=tk.BOTH, expand=1)
 
 # ---------------------------- STATUS BAR ------------------------------- #
-status_frame = tk.LabelFrame(root, bd=1, relief=tk.SUNKEN)
-status_frame.grid(padx=2, pady=2, sticky=tk.N+tk.S+tk.E+tk.W, columnspan=2)
+status_frame = tk.LabelFrame(root, bd=0, relief=tk.SUNKEN, bg=LIGHT_COLOR, highlightthickness=0)
+status_frame.grid(padx=5, pady=5, sticky=tk.N+tk.S+tk.E+tk.W, columnspan=2)
 
 # Made By
-made_by = tk.Label(status_frame, text="Made By Arnav Ghatti", anchor=tk.E, font=(FONT_NAME, 9, "normal"))
+made_by = tk.Label(status_frame, text="Made By Arnav Ghatti", anchor=tk.E, font=(FONT_NAME, 9, "normal"), bg=DARK_COLOR, highlightthickness=0, fg=FONT_COLOR)
 made_by.pack(side=tk.RIGHT, fill=tk.BOTH, expand=1)
 
 # Version
-version_label = tk.Label(status_frame, text="Version: 2.2.7", anchor=tk.W, font=(FONT_NAME, 9, "normal"))
+version_label = tk.Label(status_frame, text="Version: 2.2.7", anchor=tk.W, font=(FONT_NAME, 9, "normal"), bg=DARK_COLOR, highlightthickness=0, fg=FONT_COLOR)
 version_label.pack(side=tk.LEFT, fill=tk.BOTH, expand=1)
 
 def load_data():
