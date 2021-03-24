@@ -38,8 +38,8 @@ After doing so open either the main.exe file (If you are on Windows) or the main
 * Version 2.2.7
     * Font changed
     * Minor changes to the code
-    * Empty Fields are not allowed
-    * Amount section has been changed to only numbers
+    * Layout changed
+    * Colors!!
 
 ## License ##
 
