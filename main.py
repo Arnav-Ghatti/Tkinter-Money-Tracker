@@ -172,7 +172,7 @@ data_frame = tk.Frame(root, bg=DARK_COLOR, highlightthickness=0)
 data_frame.grid(row=1, column=1, rowspan=2)
 
 # Scroll Bars
-scroll_bar_y = tk.Scrollbar(data_frame, orient=tk.VERTICAL)
+scroll_bar_y = tk.Scrollbar(data_frame, orient=tk.VERTICAL, highlightcolor=DARK_COLOR)
 scroll_bar_x = tk.Scrollbar(data_frame, orient=tk.HORIZONTAL)
 
 # Listbox
@@ -191,11 +191,11 @@ status_frame = tk.LabelFrame(root, bd=0, relief=tk.SUNKEN, bg=LIGHT_COLOR, highl
 status_frame.grid(padx=5, pady=5, sticky=tk.N+tk.S+tk.E+tk.W, columnspan=2)
 
 # Made By
-made_by = tk.Label(status_frame, text="Made By Arnav Ghatti", anchor=tk.E, font=(FONT_NAME, 9, "normal"), bg=DARK_COLOR, highlightthickness=0, fg=FONT_COLOR)
+made_by = tk.Label(status_frame, text="Made By Arnav Ghatti", anchor=tk.E, font=(FONT_NAME, 9, "normal"), bg=LIGHT_COLOR, highlightthickness=0, fg=FONT_COLOR)
 made_by.pack(side=tk.RIGHT, fill=tk.BOTH, expand=1)
 
 # Version
-version_label = tk.Label(status_frame, text="Version: 2.2.7", anchor=tk.W, font=(FONT_NAME, 9, "normal"), bg=DARK_COLOR, highlightthickness=0, fg=FONT_COLOR)
+version_label = tk.Label(status_frame, text="Version: 2.2.7", anchor=tk.W, font=(FONT_NAME, 9, "normal"), bg=LIGHT_COLOR, highlightthickness=0, fg=FONT_COLOR)
 version_label.pack(side=tk.LEFT, fill=tk.BOTH, expand=1)
 
 def load_data():
