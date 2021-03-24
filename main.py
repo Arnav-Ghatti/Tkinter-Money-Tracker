@@ -172,7 +172,7 @@ data_frame = tk.Frame(root, bg=DARK_COLOR, highlightthickness=0)
 data_frame.grid(row=1, column=1, rowspan=2)
 
 # Scroll Bars
-scroll_bar_y = tk.Scrollbar(data_frame, orient=tk.VERTICAL, highlightcolor=DARK_COLOR)
+scroll_bar_y = tk.Scrollbar(data_frame, orient=tk.VERTICAL)
 scroll_bar_x = tk.Scrollbar(data_frame, orient=tk.HORIZONTAL)
 
 # Listbox
