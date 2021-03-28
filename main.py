@@ -11,6 +11,7 @@ FONT_COLOR = "#ffffff"
 root = tk.Tk()
 root.title("Money Tracker")
 root.config(bg=DARK_COLOR)
+root.resizable(0, 0)
 
 transactions_history = {}
 transactions = []
