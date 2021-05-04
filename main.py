@@ -12,6 +12,7 @@ root = tk.Tk()
 root.title("Money Tracker")
 root.config(bg=BG_COLOR)
 root.resizable(0, 0)
+root.iconbitmap(r"money.ico")
 
 transactions_history = {}
 transactions = []
@@ -210,7 +211,7 @@ made_by = tk.Label(status_frame, text="Made By Arnav Ghatti", anchor=tk.E, font=
 made_by.pack(side=tk.RIGHT, fill=tk.BOTH, expand=1)
 
 # Version
-version_label = tk.Label(status_frame, text="Version: 2.5", anchor=tk.W, font=(FONT_NAME, 9, "normal"), bg="#3f72af", highlightthickness=0, fg=BG_COLOR)
+version_label = tk.Label(status_frame, text="Version: 2.5.3", anchor=tk.W, font=(FONT_NAME, 9, "normal"), bg="#3f72af", highlightthickness=0, fg=BG_COLOR)
 version_label.pack(side=tk.LEFT, fill=tk.BOTH, expand=1)
 
 def load_data():

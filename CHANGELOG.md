@@ -21,3 +21,6 @@
     * Minor changes to the code
     * Better Colors
     * Currency feature
+* Version 2.5.3
+    * Icon
+    * Exe file icon
