@@ -12,7 +12,7 @@ root = tk.Tk()
 root.title("Money Tracker")
 root.config(bg=BG_COLOR)
 root.resizable(0, 0)
-root.iconbitmap(r"money.ico")
+root.iconbitmap("C:\\Users\\ASUA\\Desktop\\Tests\\MoneyTransactionsOriginal\\money.ico")
 
 transactions_history = {}
 transactions = []
@@ -28,9 +28,9 @@ def set_listbox():
         listbox.insert(tk.END, f"{item[0]} to {item[1]}, {clicked.get()}{item[2]}, {item[3]}")
 
 def save_json(data):
-    """Saves the date to history.json file"""
+    """Saves the date to C:\\Users\\ASUA\\Desktop\\Tests\\MoneyTransactionsOriginal\\history.json file"""
     
-    with open("history.json", "w") as file:
+    with open("C:\\Users\\ASUA\\Desktop\\Tests\\MoneyTransactionsOriginal\\history.json", "w") as file:
         json.dump(transactions_history, file, indent=4)
 
 def check_fields():
@@ -215,11 +215,11 @@ version_label = tk.Label(status_frame, text="Version: 2.5.3", anchor=tk.W, font=
 version_label.pack(side=tk.LEFT, fill=tk.BOTH, expand=1)
 
 def load_data():
-    """Loads data from the history.json file to the listbox"""
+    """Loads data from the C:\\Users\\ASUA\\Desktop\\Tests\\MoneyTransactionsOriginal\\history.json file to the listbox"""
     
     global transactions, listbox
     
-    with open("history.json", "r") as file:
+    with open("C:\\Users\\ASUA\\Desktop\\Tests\\MoneyTransactionsOriginal\\history.json", "r") as file:
         transaction_history = json.load(file)
 
     transactions = transaction_history["Transactions"]
