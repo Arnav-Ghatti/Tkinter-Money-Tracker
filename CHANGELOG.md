@@ -24,3 +24,7 @@
 * Version 2.5.3
     * Icon
     * Exe file icon
+* Version 3.5.3
+    * Better EXE File
+    * Download Page for App
+    * MSI Installer for app
